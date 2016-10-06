@@ -1,6 +1,14 @@
 # RV Coding Challenge
 
-A new client wants to build a small API to allow users to pin areas they've visited and potentially share them with other users. The client included a set of sample data in `User.csv`, `City.csv`, and `State.csv`. Please implement a few basic operations on the data provided, including listing the cities in a given state, registering a visit to a particular city by a user, removing a visit to a city, listing cities visited by a user, and listing states visited by a user.  You may use whatever language or tools you wish to complete the exercise.  Keep in mind that you may be asked to extend your solution in an on-site interview.
+A new client wants to build a small API to allow users to pin areas they've visited and potentially share them with other users. The client included a set of sample data in `User.csv`, `City.csv`, and `State.csv`. Please implement a few basic operations on the data provided, including the following.
+
+ - Listing the cities in a given state
+ - Registering a visit to a particular city by a user
+ - Removing a visit to a city
+ - Listing cities visited by a user
+ - Listing states visited by a user.  
+
+You may use whatever language or tools you wish to complete the exercise.  Keep in mind that you may be asked to extend your solution in an on-site interview.
 
 
 **Required endpoints**
