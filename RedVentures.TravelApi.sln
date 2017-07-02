@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedVentures.TravelApi.Web", "RedVentures.TravelApi.Web\RedVentures.TravelApi.Web.csproj", "{AF9C84BC-CE81-4BDC-88FD-EFCADFC54770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedVentures.TravelApi.Web", "RedVentures.TravelApi.Web\RedVentures.TravelApi.Web.csproj", "{AF9C84BC-CE81-4BDC-88FD-EFCADFC54770}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RedVentures.TravelApi.Database", "RedVentures.TravelApi.Database\RedVentures.TravelApi.Database.sqlproj", "{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{AF9C84BC-CE81-4BDC-88FD-EFCADFC54770}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF9C84BC-CE81-4BDC-88FD-EFCADFC54770}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF9C84BC-CE81-4BDC-88FD-EFCADFC54770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
