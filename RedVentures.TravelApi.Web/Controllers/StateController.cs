@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 
 namespace RedVentures.TravelApi.Web.Controllers
 {
-    [Route("api/v1/states")]
-    public class StatesV1Controller : Controller
+    [Route("state")]
+    public class StateController : Controller
     {
         private readonly IStateRepository _stateRepo;
         private readonly ICityRepository _cityRepo;
 
-        public StatesV1Controller(
+        public StateController(
             IStateRepository stateRepo,
             ICityRepository cityRepo)
         {
