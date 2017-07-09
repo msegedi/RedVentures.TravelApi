@@ -21,12 +21,12 @@ namespace RedVentures.TravelApi.Web.Controllers
         [HttpGet("{stateCode}/cities")]
         public async Task<IActionResult> GetCities(string stateCode)
         {
-            var stateId = await _stateRepo.GetIdByCode(stateCode);
+            var stateId = await _stateRepo.GetIdByCodeAsync(stateCode);
 
             if (!stateId.HasValue)
                 return NotFound();
 
-            var cities = await _cityRepo.GetCityNamesByState(stateId.Value);
+            var cities = await _cityRepo.GetCityNamesByStateAsync(stateId.Value);
 
             return Ok(cities);
         }

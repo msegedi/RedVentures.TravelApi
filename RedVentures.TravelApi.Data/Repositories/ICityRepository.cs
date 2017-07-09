@@ -5,6 +5,7 @@ namespace RedVentures.TravelApi.Data.Repositories
 {
     public interface ICityRepository
     {
-        Task<IList<string>> GetCityNamesByState(int stateId);
+        Task<IList<string>> GetCityNamesByStateAsync(int stateId);
+        Task<int?> GetCityIdAsync(int stateId, string cityName);
     }
 }

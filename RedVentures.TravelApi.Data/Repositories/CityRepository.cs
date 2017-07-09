@@ -17,7 +17,7 @@ namespace RedVentures.TravelApi.Data.Repositories
             _settings = settings.Value;
         }
 
-        public async Task<IList<string>> GetCityNamesByState(int stateId)
+        public async Task<IList<string>> GetCityNamesByStateAsync(int stateId)
         {
             const string sql = @"
 SELECT c.Name
@@ -29,6 +29,22 @@ WHERE c.StateId = @stateId
                 var cities = await conn.QueryAsync<string>(sql.ToString(), new { stateId = stateId });
 
                 return cities.ToList();
+            }
+        }
+
+        public async Task<int?> GetCityIdAsync(int stateId, string cityName)
+        {
+            const string sql = @"
+SELECT c.CityId
+FROM City c
+WHERE c.StateId = @stateId
+AND c.Name = @name
+";
+            using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
+            {
+                var cityId = await conn.QuerySingleOrDefaultAsync<int?>(sql.ToString(), new { stateId = stateId, name = cityName });
+
+                return cityId;
             }
         }
     }

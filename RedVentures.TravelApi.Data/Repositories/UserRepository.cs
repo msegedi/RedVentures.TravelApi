@@ -1,32 +1,30 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Options;
 using RedVentures.TravelApi.Core;
+using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace RedVentures.TravelApi.Data.Repositories
 {
-    public class StateRepository : IStateRepository
+    public class UserRepository : IUserRepository
     {
         private readonly AppSettings _settings;
 
-        public StateRepository(IOptions<AppSettings> settings)
+        public UserRepository(IOptions<AppSettings> settings)
         {
             _settings = settings.Value;
         }
 
-        public async Task<int?> GetIdByCodeAsync(string stateCode)
+        public async Task<int?>GetIdByUid(Guid userUid)
         {
-            const string sql = @"
-SELECT s.StateId
-FROM State s
-WHERE s.Code = @stateCode
-";
+            const string sql = "SELECT u.UserId FROM [User] u WHERE u.UserUid = @userUid";
+
             using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
             {
-                var stateId = await conn.QuerySingleOrDefaultAsync<int?>(sql.ToString(), new { stateCode = stateCode });
+                var userId = await conn.QuerySingleOrDefaultAsync<int?>(sql.ToString(), new { userUid = userUid });
 
-                return stateId;
+                return userId;
             }
         }
     }

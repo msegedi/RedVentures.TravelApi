@@ -4,6 +4,6 @@ namespace RedVentures.TravelApi.Data.Repositories
 {
     public interface IStateRepository
     {
-        Task<int?> GetIdByCode(string stateCode);
+        Task<int?> GetIdByCodeAsync(string stateCode);
     }
 }
