@@ -1,8 +1,11 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Options;
 using RedVentures.TravelApi.Core;
+using RedVentures.TravelApi.Data.TransferObjects;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RedVentures.TravelApi.Data.Repositories
@@ -14,6 +17,26 @@ namespace RedVentures.TravelApi.Data.Repositories
         public VisitRepository(IOptions<AppSettings> settings)
         {
             _settings = settings.Value;
+        }
+
+        public async Task<IList<CityWithState>> GetDistinctCitiesVisitedByUser(int userId)
+        {
+            var sql = $@"
+SELECT DISTINCT c.Name AS {nameof(CityWithState.CityName)},
+s.Code AS {nameof(CityWithState.StateCode)}
+FROM Visit v
+INNER JOIN City c ON c.CityId = v.CityId
+INNER JOIN State s ON s.StateId = c.StateId
+WHERE v.UserId = @userId
+ORDER BY s.Code, c.Name
+";
+
+            using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
+            {
+                var cities = await conn.QueryAsync<CityWithState>(sql, new { userId = userId });
+
+                return cities.ToList();
+            }
         }
 
         public async Task<int?> GetIdByUidAsync(Guid visitUid)

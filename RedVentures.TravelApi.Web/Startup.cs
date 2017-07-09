@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RedVentures.TravelApi.Core;
 using RedVentures.TravelApi.Data.Repositories;
+using RedVentures.TravelApi.Web.Mappers;
 
 namespace RedVentures.TravelApi.Web
 {
@@ -37,6 +38,9 @@ namespace RedVentures.TravelApi.Web
             services.AddScoped<IStateRepository, StateRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IVisitRepository, VisitRepository>();
+
+            // DI for Web.
+            services.AddScoped<IVisitedCityMapper, VisitedCityMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RedVentures.TravelApi.Data.Repositories;
+using RedVentures.TravelApi.Web.Mappers;
 using RedVentures.TravelApi.Web.Models;
 using System;
 using System.Linq;
@@ -14,17 +15,35 @@ namespace RedVentures.TravelApi.Web.Controllers
         private readonly ICityRepository _cityRepo;
         private readonly IUserRepository _userRepo;
         private readonly IVisitRepository _visitRepo;
+        private readonly IVisitedCityMapper _visitedCityMapper;
 
         public UserController(
             IStateRepository stateRepo,
             ICityRepository cityRepo,
             IUserRepository userRepo,
-            IVisitRepository visitRepo)
+            IVisitRepository visitRepo,
+            IVisitedCityMapper visitedCityMapper)
         {
             _stateRepo = stateRepo;
             _cityRepo = cityRepo;
             _userRepo = userRepo;
             _visitRepo = visitRepo;
+            _visitedCityMapper = visitedCityMapper;
+        }
+
+        [HttpGet("{userUid}/visits")]
+        public async Task<IActionResult> GetVisits(Guid userUid)
+        {
+            var userId = await _userRepo.GetIdByUid(userUid);
+
+            if (!userId.HasValue)
+                return NotFound();
+
+            var daCities = await _visitRepo.GetDistinctCitiesVisitedByUser(userId.Value);
+
+            var cities = _visitedCityMapper.GetListFromDataTransferObjects(daCities);
+
+            return Ok(cities);
         }
 
         [HttpGet("{userUid}/visits/{visitUid}")]
