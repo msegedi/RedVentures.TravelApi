@@ -22,7 +22,7 @@ namespace RedVentures.TravelApi.Data.Repositories
 
             using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
             {
-                var visitId = await conn.QuerySingleOrDefaultAsync<int?>(sql.ToString(), new { visitUid = visitUid });
+                var visitId = await conn.QuerySingleOrDefaultAsync<int?>(sql, new { visitUid = visitUid });
 
                 return visitId;
             }
@@ -36,7 +36,7 @@ namespace RedVentures.TravelApi.Data.Repositories
 
             using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
             {
-                await conn.ExecuteAsync(sql.ToString(), new { visitUid = visitUid, userId = userId, cityId = cityId });
+                await conn.ExecuteAsync(sql, new { visitUid = visitUid, userId = userId, cityId = cityId });
 
                 return visitUid;
             }
@@ -48,7 +48,7 @@ namespace RedVentures.TravelApi.Data.Repositories
 
             using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
             {
-                await conn.ExecuteAsync(sql.ToString(), new { visitId = visitId });
+                await conn.ExecuteAsync(sql, new { visitId = visitId });
             }
         }
 

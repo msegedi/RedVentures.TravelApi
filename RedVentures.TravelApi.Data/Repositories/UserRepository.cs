@@ -22,7 +22,7 @@ namespace RedVentures.TravelApi.Data.Repositories
 
             using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
             {
-                var userId = await conn.QuerySingleOrDefaultAsync<int?>(sql.ToString(), new { userUid = userUid });
+                var userId = await conn.QuerySingleOrDefaultAsync<int?>(sql, new { userUid = userUid });
 
                 return userId;
             }

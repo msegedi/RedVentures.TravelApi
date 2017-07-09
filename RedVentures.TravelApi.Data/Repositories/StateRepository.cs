@@ -24,7 +24,7 @@ WHERE s.Code = @stateCode
 ";
             using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
             {
-                var stateId = await conn.QuerySingleOrDefaultAsync<int?>(sql.ToString(), new { stateCode = stateCode });
+                var stateId = await conn.QuerySingleOrDefaultAsync<int?>(sql, new { stateCode = stateCode });
 
                 return stateId;
             }
