@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RedVentures.TravelApi.Core;
+using RedVentures.TravelApi.Data.Repositories;
 
 namespace RedVentures.TravelApi.Web
 {
@@ -25,6 +27,14 @@ namespace RedVentures.TravelApi.Web
         {
             // Add framework services.
             services.AddMvc();
+
+            // Wire-up DI for IOptions.
+            services.AddOptions();
+            services.Configure<AppSettings>(Configuration);
+
+            // DI for Data.
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IStateRepository, StateRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

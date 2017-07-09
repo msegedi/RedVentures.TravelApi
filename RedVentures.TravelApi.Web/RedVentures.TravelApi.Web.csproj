@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
@@ -16,6 +15,10 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RedVentures.TravelApi.Core\RedVentures.TravelApi.Core.csproj" />
+    <ProjectReference Include="..\RedVentures.TravelApi.Data\RedVentures.TravelApi.Data.csproj" />
   </ItemGroup>
 
 </Project>

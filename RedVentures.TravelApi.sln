@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedVentures.TravelApi.Web",
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RedVentures.TravelApi.Database", "RedVentures.TravelApi.Database\RedVentures.TravelApi.Database.sqlproj", "{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedVentures.TravelApi.Data", "RedVentures.TravelApi.Data\RedVentures.TravelApi.Data.csproj", "{A2D8CB1C-3C05-4229-BF88-968781968B48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedVentures.TravelApi.Core", "RedVentures.TravelApi.Core\RedVentures.TravelApi.Core.csproj", "{C21B87D4-AC97-40EE-8BCE-13E56B2BDD0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AAF7F725-6A64-4D3C-AB3B-11D85619EB44}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A2D8CB1C-3C05-4229-BF88-968781968B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D8CB1C-3C05-4229-BF88-968781968B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D8CB1C-3C05-4229-BF88-968781968B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D8CB1C-3C05-4229-BF88-968781968B48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C21B87D4-AC97-40EE-8BCE-13E56B2BDD0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C21B87D4-AC97-40EE-8BCE-13E56B2BDD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C21B87D4-AC97-40EE-8BCE-13E56B2BDD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C21B87D4-AC97-40EE-8BCE-13E56B2BDD0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
