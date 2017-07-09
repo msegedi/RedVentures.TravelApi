@@ -58,5 +58,23 @@ namespace RedVentures.TravelApi.Web.Controllers
 
             return CreatedAtAction(nameof(GetVisit), new { userUid = userUid, visitUid = visitUid }, new { visitUid = visitUid });
         }
+
+        [HttpDelete("{userUid}/visits/{visitUid}")]
+        public async Task<IActionResult> DeleteVisit(Guid userUid, Guid visitUid)
+        {
+            /*
+             * Since VisitUids are unique, and we don't yet have any authorization logic tied to UserUid, we can skip UserUid validation.
+             * However, for completeness, it would probably be a good idea to make sure the UserUid exists and that the given VisitUid belongs to it.
+             */
+
+            var visitId = await _visitRepo.GetIdByUidAsync(visitUid);
+
+            if (!visitId.HasValue)
+                return NotFound();
+
+            await _visitRepo.DeleteAsync(visitId.Value);
+
+            return NoContent();
+        }
     }
 }

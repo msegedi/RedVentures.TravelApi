@@ -16,6 +16,18 @@ namespace RedVentures.TravelApi.Data.Repositories
             _settings = settings.Value;
         }
 
+        public async Task<int?> GetIdByUidAsync(Guid visitUid)
+        {
+            const string sql = "SELECT VisitId FROM Visit WHERE VisitUid = @visitUid";
+
+            using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
+            {
+                var visitId = await conn.QuerySingleOrDefaultAsync<int?>(sql.ToString(), new { visitUid = visitUid });
+
+                return visitId;
+            }
+        }
+
         public async Task<Guid> AddAsync(int userId, int cityId)
         {
             var visitUid = Guid.NewGuid();
@@ -29,5 +41,16 @@ namespace RedVentures.TravelApi.Data.Repositories
                 return visitUid;
             }
         }
+
+        public async Task DeleteAsync(int visitId)
+        {
+            const string sql = "DELETE FROM Visit WHERE VisitId = @visitId";
+
+            using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
+            {
+                await conn.ExecuteAsync(sql.ToString(), new { visitId = visitId });
+            }
+        }
+
     }
 }
