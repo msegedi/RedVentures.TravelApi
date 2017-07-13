@@ -32,7 +32,7 @@ namespace RedVentures.TravelApi.Web.Controllers
         }
 
         [HttpGet("{userUid}/visits")]
-        public async Task<IActionResult> GetVisits(Guid userUid)
+        public async Task<IActionResult> GetCityVisits(Guid userUid)
         {
             var userId = await _userRepo.GetIdByUid(userUid);
 
@@ -44,6 +44,19 @@ namespace RedVentures.TravelApi.Web.Controllers
             var cities = _visitedCityMapper.GetListFromDataTransferObjects(daCities);
 
             return Ok(cities);
+        }
+
+        [HttpGet("{userUid}/visits/states")]
+        public async Task<IActionResult> GetStateVisits(Guid userUid)
+        {
+            var userId = await _userRepo.GetIdByUid(userUid);
+
+            if (!userId.HasValue)
+                return NotFound();
+
+            var daStates = await _visitRepo.GetDistinctStatesVisitedByUser(userId.Value);
+
+            return Ok(daStates);
         }
 
         [HttpGet("{userUid}/visits/{visitUid}")]

@@ -39,6 +39,25 @@ ORDER BY s.Code, c.Name
             }
         }
 
+        public async Task<IList<string>> GetDistinctStatesVisitedByUser(int userId)
+        {
+            var sql = $@"
+SELECT DISTINCT s.Code AS {nameof(CityWithState.StateCode)}
+FROM Visit v
+INNER JOIN City c ON c.CityId = v.CityId
+INNER JOIN State s ON s.StateId = c.StateId
+WHERE v.UserId = @userId
+ORDER BY s.Code
+";
+
+            using (var conn = new SqlConnection(_settings.ConnectionStrings.TravelApiDatabase))
+            {
+                var states = await conn.QueryAsync<string>(sql, new { userId = userId });
+
+                return states.ToList();
+            }
+        }
+
         public async Task<int?> GetIdByUidAsync(Guid visitUid)
         {
             const string sql = "SELECT VisitId FROM Visit WHERE VisitUid = @visitUid";
